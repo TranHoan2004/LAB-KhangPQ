@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controller;
+
+import bo.CountryInputter;
+import bo.CountryManager;
+import entity.Country;
+import java.util.ArrayList;
+import utils.ValidationAndNormalizingTextUtil;
+
+/**
+ *
+ * @author hp
+ */
+public class CountryManagerController {
+
+    private CountryInputter countryInputter;
+    private CountryManager countryManager;
+    ArrayList<Country> ret;
+
+    public CountryManagerController() {
+        countryManager = new CountryManager();
+        ret = new ArrayList<>();
+    }
+
+    private Country addCountry() throws Exception {
+        countryInputter = new CountryInputter();
+        countryInputter.inputInformation();
+        Country c = countryInputter.getCountry();
+        countryManager.addCountry(c);
+        return c;
+    }
+
+    public void addAllCountry() throws Exception {
+        ret.add(addCountry());
+    }
+
+    public void displayAllCountry() {
+        System.out.printf("%-10s%-25s%-20s%-25s\n", "ID", "Name", "Total Area",
+                "Terrain");
+        countryManager.display();
+    }
+
+    public void searching() {
+        String name = ValidationAndNormalizingTextUtil.intputSring("Enter name country wanna search: ", "Error format");
+        ArrayList<Country> listFound = countryManager.searchByName(name);
+        if (listFound.isEmpty()) {
+            System.out.println("Not Found!");
+        } else {
+            System.out.println("The Country found:");
+            for (Country country : listFound) {
+                System.out.println(country);
+            }
+        }
+    }
+
+    public void sortIncresingByName() {
+        ArrayList<Country> sort = countryManager.getSorted();
+        for (Country country : sort) {
+            System.out.println(country);
+        }
+    }
+
+}

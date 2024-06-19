@@ -1,0 +1,29 @@
+package entity;
+
+public class Country extends EastAsiaCountries{
+
+    private String countryTerrain;
+
+    public Country() {
+    }
+
+    public Country(String countryTerrain, String countryCode,
+            String countryName, double countryArea) {
+        super(countryCode, countryName, countryArea);
+        this.countryTerrain = countryTerrain;
+    }
+
+
+    public String getCountryTerrain() {
+        return countryTerrain;
+    }
+
+    public void setCountryTerrain(String countryTerrain) {
+        this.countryTerrain = countryTerrain;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(super.toString()+"%-25s", countryTerrain);
+    }   
+}

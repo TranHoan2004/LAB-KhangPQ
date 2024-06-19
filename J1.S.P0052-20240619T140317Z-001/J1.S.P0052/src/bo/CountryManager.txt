@@ -1,0 +1,82 @@
+package bo;
+
+import entity.Country;
+import java.util.ArrayList;
+
+public class CountryManager {
+
+    private ArrayList<Country> country;
+
+    public CountryManager() {
+        country = new ArrayList<>();
+    }
+
+    public CountryManager(ArrayList<Country> cList) {
+        this.country = cList;
+    }
+
+    public Country addCountry(Country c) {
+        country.add(c);
+        return c;
+    }
+
+    public int searchById(String id) {
+        for (int index = 0; index < country.size(); index++) {
+            if (country.get(index).getCountryCode().equalsIgnoreCase(id)) {
+                return index;
+            }
+        }
+        return -1;
+    }
+    
+    public Country getCountryById(String id) throws Exception {
+        int index = searchById(id);
+        if (index != -1) {
+            return country.get(index);
+        }
+        throw new Exception("Id not found");
+    }
+
+
+    public ArrayList<Country> searchByName(String name) {
+        ArrayList<Country> ret = new ArrayList<>();
+        for (Country c : country) {
+            if (c.getCountryName().equalsIgnoreCase(name)) {
+                ret.add(c);
+            }
+        }
+        return ret;
+    }
+
+    private ArrayList<Country> Sort() {
+        ArrayList<Country> cloneCountry = new ArrayList<>();
+        cloneCountry = (ArrayList) country.clone();
+        Country[] arr = cloneCountry.toArray(new Country[cloneCountry.size()]);
+        Country swap;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j].getCountryName().compareTo(arr[j + 1].getCountryName()) > 0) {
+                    swap = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = swap;
+                }
+            }
+        }
+        cloneCountry.clear();
+        for (int i = 0; i < arr.length; i++) {
+            cloneCountry.add(arr[i]);
+        }
+        return cloneCountry;
+    }
+
+    public ArrayList<Country> getSorted() {
+        return Sort();
+    }
+
+    public void display() {
+        for (Country country : country) {
+            System.out.println(country);
+        }
+    }
+
+}

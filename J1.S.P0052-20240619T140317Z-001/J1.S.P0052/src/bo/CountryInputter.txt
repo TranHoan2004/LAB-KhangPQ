@@ -1,0 +1,34 @@
+package bo;
+
+import entity.Country;
+import utils.ValidationAndNormalizingTextUtil;
+
+public class CountryInputter {
+
+    private Country c;
+    CountryManager countryManager = new CountryManager();
+
+    public Country getCountry() {
+        return c;
+    }
+
+    public CountryInputter() {
+        c = new Country();
+    }
+
+    public void inputInformation() throws Exception {
+        String code = ValidationAndNormalizingTextUtil.intputSring("Enter code of country: ", "Error Format");
+        int index = countryManager.searchById(code);
+        if(index != -1){
+            System.out.println("ID is duplicate");
+        } else {
+            c.setCountryCode(code);
+        }
+        String name = ValidationAndNormalizingTextUtil.intputSring("Enter name of country: ", "Error Format");
+        c.setCountryName(name);
+        c.setCountryArea(ValidationAndNormalizingTextUtil.inputDouble("Enter total Area: ", 0.0000001, Double.MAX_VALUE));
+        c.setCountryTerrain(ValidationAndNormalizingTextUtil.intputSring("Enter Terrain: ", "Error Format"));
+
+    }
+
+}
