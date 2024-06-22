@@ -2,7 +2,6 @@ package bo;
 
 import entity.Account;
 import java.util.ArrayList;
-import utils.ValidationAndNormalText;
 
 public class AccountManager {
 

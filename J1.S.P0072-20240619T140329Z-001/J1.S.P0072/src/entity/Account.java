@@ -1,5 +1,5 @@
 package entity;
-import utils.ValidationAndNormalText;
+import utils.Validation;
 public class Account {
 
     private String username;
@@ -15,7 +15,7 @@ public class Account {
 
     public Account(String username, String password, String name, String phone, String email, String address, String dateOfBirth) {
         this.username = username;
-        this.password = ValidationAndNormalText.MD5Encryption(password);
+        this.password = Validation.MD5Encryption(password);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -32,7 +32,7 @@ public class Account {
     }
 
     public String getPassword() {
-        return ValidationAndNormalText.MD5Encryption(password);
+        return Validation.MD5Encryption(password);
     }
 
     public void setPassword(String password) {

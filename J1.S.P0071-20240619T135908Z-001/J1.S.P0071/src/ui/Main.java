@@ -1,13 +1,13 @@
 package ui;
 
-import controller.TaskManagerController;
+import controller.Controller;
 import entity.Task;
-import utils.ValidationAndNormalizingTextUtil;
+import utils.Validation;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        TaskManagerController taskManagerController = new TaskManagerController();
+        Controller taskManagerController = new Controller();
         String menu = "                      WELCOME TO Task MANAGEMENT\n"
                 + "                      1. Add Task\n"
                 + "                      2. Delete Task\n"
@@ -15,7 +15,7 @@ public class Main {
                 + "                      4. Exit\n"
                 + "Enter one option in above : ";
         while (true) {
-            int choice = ValidationAndNormalizingTextUtil.getInt(menu, "Only number integer!", "input must be in range [1,4]", 1, 4);
+            int choice = Validation.getInt(menu, "Only number integer!", "input must be in range [1,4]", 1, 4);
             switch (choice) {
                 case 1:
                     Task add = taskManagerController.getInformationTask();

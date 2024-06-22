@@ -6,9 +6,9 @@
 package ui;
 
 import bo.WorkerManager;
-import controller.Manager;
+import controller.Controller;
 import model.Worker;
-import utils.Validate;
+import utils.Validation;
 
 /**
  *
@@ -17,7 +17,7 @@ import utils.Validate;
 public class Main {
 
     public static void main(String[] args) {
-        Manager m = new Manager();
+        Controller m = new Controller();
         WorkerManager wm = new WorkerManager();
         while (true) {
             System.out.println("----------Menu----------");
@@ -29,7 +29,7 @@ public class Main {
                     + "5.Display information salary\n"
                     + "6.Exit\n");
             System.out.println("Your choice: ");
-            int choice = Validate.checkIntLimit(1, 6);
+            int choice = Validation.checkIntLimit(1, 6);
             switch (choice) {
                 case 1:
                     try {
@@ -57,8 +57,8 @@ public class Main {
                      m.displayInformationUpdate();
                     break;
                 case 6:
-                                 String ID = Validate.checkInputString("Enter id: ");
-                                   wm.getCodeInputln(ID);
+                                 String ID = Validation.checkInputString("Enter id: ");
+                                   wm.searchWorkerById(ID);
             }
         }
     }

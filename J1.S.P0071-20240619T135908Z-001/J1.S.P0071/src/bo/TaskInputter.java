@@ -2,7 +2,7 @@ package bo;
 
 import entity.Task;
 import entity.TypeName;
-import utils.ValidationAndNormalizingTextUtil;
+import utils.Validation;
 
 public class TaskInputter {
 
@@ -18,8 +18,8 @@ public class TaskInputter {
 
     public Task informationTask() {
 
-        task.setName(ValidationAndNormalizingTextUtil.normalFormName(ValidationAndNormalizingTextUtil.getNonEmptyString("Requirement name: ")));
-        int taskType = ValidationAndNormalizingTextUtil.getInt("1. Code\n"
+        task.setName(Validation.normalFormName(Validation.getNonEmptyString("Requirement name: ")));
+        int taskType = Validation.getInt("1. Code\n"
                 + "2. Test\n"
                 + "3. Design\n"
                 + "4. Review\n"
@@ -42,11 +42,11 @@ public class TaskInputter {
         }
 
         task.setGetTypeName(t);
-        task.setDate(ValidationAndNormalizingTextUtil.getDate("Enter Date: ", "input must be dd-mm-yyyy", "^([0]?[1-9]|[1|2][0-9]|[3][0|1])[-]([0]?[1-9]|[1][0-2])[-]([0-9]{4}|[0-9]{2})$"));
-        task.setFrom(ValidationAndNormalizingTextUtil.getDoubleWithStepOfValue("Enter From: ", "Must be a double number", "Must in range (8;17)", 8, 17, 0.5));
-        task.setTo(ValidationAndNormalizingTextUtil.getDoubleWithStepOfValue("Enter To: ", "Must be a double number", "Must in range (" + task.getFrom() + 0.5 + ", 17.5)", task.getFrom() + 0.5, 17.5, 0.5));
-        task.setAssignee(ValidationAndNormalizingTextUtil.normalFormName(ValidationAndNormalizingTextUtil.getNonEmptyString("Enter Assignee: ")));
-        task.setReviewer(ValidationAndNormalizingTextUtil.normalFormName(ValidationAndNormalizingTextUtil.getNonEmptyString("Enter Reviewer: ")));
+        task.setDate(Validation.getDate("Enter Date: ", "input must be dd-mm-yyyy", "^([0]?[1-9]|[1|2][0-9]|[3][0|1])[-]([0]?[1-9]|[1][0-2])[-]([0-9]{4}|[0-9]{2})$"));
+        task.setFrom(Validation.getDoubleWithStepOfValue("Enter From: ", "Must be a double number", "Must in range (8;17)", 8, 17, 0.5));
+        task.setTo(Validation.getDoubleWithStepOfValue("Enter To: ", "Must be a double number", "Must in range (" + task.getFrom() + 0.5 + ", 17.5)", task.getFrom() + 0.5, 17.5, 0.5));
+        task.setAssignee(Validation.normalFormName(Validation.getNonEmptyString("Enter Assignee: ")));
+        task.setReviewer(Validation.normalFormName(Validation.getNonEmptyString("Enter Reviewer: ")));
         return task;
     }
 

@@ -1,7 +1,7 @@
 package bo;
 
 import entity.Account;
-import utils.ValidationAndNormalText;
+import utils.Validation;
 
 public class AccountInputter {
 
@@ -16,16 +16,16 @@ public class AccountInputter {
     }
 
     public Account userAccount() {
-        a.setUsername(ValidationAndNormalText.intputSring("Enter Username: ", "Error Format"));
+        a.setUsername(Validation.intputSring("Enter Username: ", "Error Format"));
         return a;
     }
 
     public Account information() {
-        a.setPassword(ValidationAndNormalText.intputSring("Enter Password: ", "Eror Format"));
-        a.setPhone(ValidationAndNormalText.getPhone(10, "Enter phone: "));
-        a.setEmail(ValidationAndNormalText.getEmail("Enter email: "));
-//        a.setAddress(ValidationAndNormalText.intputSring("Enter Address: ", "Eror Format"));
-//        a.setDateOfBirth(ValidationAndNormalText.inputDOB("Enter DOB: "));
+        a.setPassword(Validation.intputSring("Enter Password: ", "Eror Format"));
+        a.setPhone(Validation.getPhone(10, "Enter phone: "));
+        a.setEmail(Validation.getEmail("Enter email: "));
+//        a.setAddress(Validation.intputSring("Enter Address: ", "Eror Format"));
+//        a.setDateOfBirth(Validation.inputDOB("Enter DOB: "));
         return a;
     }
 }

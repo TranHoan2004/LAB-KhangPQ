@@ -1,6 +1,6 @@
 package ui;
 
-import utils.ValidationAndNormalText;
+import utils.Validation;
 
 public class Menu {
 
@@ -11,6 +11,6 @@ public class Menu {
     }
 
     public static int getMenu() {
-        return ValidationAndNormalText.inputChoice("Enter your choice: ", 1, 3);
+        return Validation.inputChoice("Enter your choice: ", 1, 3);
     }
 }

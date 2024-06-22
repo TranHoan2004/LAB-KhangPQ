@@ -1,4 +1,3 @@
-
 package model;
 
 import java.util.Objects;
@@ -8,12 +7,13 @@ import java.util.Objects;
  * @author nguye
  */
 public class Worker {
-     private String id;
+
+    private String id;
     private String name;
     private int age;
     private double salary;
     private String workLocation;
-   public static final String TIL_STRING = String.format("%5s | %-15s | %5s | %20s | %30s", "id", "name", "age", "salary", "workLocation" );
+    public static final String TIL_STRING = String.format("%5s | %-15s | %5s | %20s | %30s", "id", "name", "age", "salary", "workLocation");
 
     public Worker() {
     }
@@ -68,20 +68,22 @@ public class Worker {
 
     @Override
     public String toString() {
-        
-        return String.format("%5s | %15s | %5d | %10.1f | %10s", id, name, age, salary, workLocation );
+
+        return String.format("%5s | %15s | %5d | %10.1f | %10s", id, name, age, salary, workLocation);
     }
 
-
     @Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Worker other = (Worker) obj;
-		return Objects.equals(id, other.id);
-	}
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Worker other = (Worker) obj;
+        return Objects.equals(id, other.id);
+    }
 }
